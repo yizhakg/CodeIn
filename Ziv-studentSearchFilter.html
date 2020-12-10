@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziv-studentSearchFilter</title>
+  <style>
+    body{
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    div:nth-child(odd){background: rgb(221, 221, 221); color: white;}
+    div{margin: 10px;}
+  </style>
+</head>
+
+<body>
+
+  <input id="search" type="text" placeholder="Enter A Search Word" />
+  <button onclick="foundDisplay()">Find</button>
+    <button onclick="filterDisplay()">Filter</button>
+  <div id="result"></div>
+  <script>
+    "use strict";
+    
+    function isThisWhatImLookingFor(student) {
+      let studentName=student.name.toLowerCase();
+      let studentlastName=student.lastName.toLowerCase();
+      let studentImLookingForLower=studentImLookingFor.toLowerCase();
+      if (studentImLookingForLower !=''&&(studentName.indexOf(studentImLookingForLower)>-1 || studentlastName.indexOf(studentImLookingForLower)>-1 || student.id.indexOf(studentImLookingForLower)>-1))
+        return true;
+      else
+        return false;
+    }
+
+
+    function foundDisplay() {
+      studentImLookingFor = document.getElementById("search").value;
+      let found = students.find(isThisWhatImLookingFor)
+      document.getElementById("result").innerText = `${(found.id)} - ${(found.name)} - ${(found.lastName)}`;
+    }
+
+      
+    function filterDisplay() {
+      studentImLookingFor = document.getElementById("search").value;
+      document.getElementById("result").innerHTML="";
+      let found=students.filter(isThisWhatImLookingFor);
+      let resultFreg=document.createDocumentFragment();
+      for(let i=0;i<found.length;i++){
+        let elementInsert=document.createElement("div");
+        elementInsert.innerText=`${(found[i].id)} - ${(found[i].name)} - ${(found[i].lastName)}`;
+        resultFreg.appendChild(elementInsert);   
+      }
+      document.getElementById("result").appendChild(resultFreg);
+    }
+
+    let students = [
+      { name: "Ziv", lastName: "Gilad‏" , id:"203039903"},
+      { name: "Yizhak", lastName: "Gete" , id:"309207182"},
+      { name: "Shalom", lastName: "Alechem", id:"129207283" },
+    ]
+    let studentImLookingFor;
+
+
+  </script>
+</body>
+
+</html>

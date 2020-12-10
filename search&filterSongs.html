@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>search&filter Songs</title>
+  <style>
+    body{
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    div:nth-child(odd){background: rgb(221, 221, 221); color: white;}
+    div{margin: 10px;}
+  </style>
+</head>
+
+<body>
+
+  <input id="search" type="text" placeholder="Enter A Search Word" />
+  <button onclick="foundDisplay()">Find</button>
+    <button onclick="filterDisplay()">Filter</button>
+  <div id="result"></div>
+  <script>
+    "use strict";
+
+    function isThisWhatImLookingFor(song) {
+      let songName=song.name.toLowerCase();
+      let songSinger=song.singer.toLowerCase();
+      let songImLookingForLower=songImLookingFor.trim().toLowerCase();
+      if (songImLookingForLower!=""&&(songName.search(songImLookingForLower)>-1 ||songSinger.search(songImLookingForLower)>-1))
+        return true;
+      else
+        return false;
+    }
+
+    function foundDisplay() {
+      songImLookingFor = document.getElementById("search").value;
+      let found = songs.find(isThisWhatImLookingFor)
+      document.getElementById("result").innerText = `${(found.singer)} - ${(found.name)}`;;
+    }
+
+      
+    function filterDisplay() {
+      songImLookingFor = document.getElementById("search").value;
+      document.getElementById("result").innerHTML="";
+      let found=songs.filter(isThisWhatImLookingFor);
+      let resultFreg=document.createDocumentFragment();
+      for(let i=0;i<found.length;i++){
+        let elementInsert=document.createElement("div");
+        elementInsert.innerText=`${(found[i].singer)} - ${(found[i].name)}`;;
+        console.log(found[i]);
+        resultFreg.appendChild(elementInsert);   
+      }
+      document.getElementById("result").appendChild(resultFreg);
+    }
+
+    let songs = [
+      { name: "Hard day night", singer: "Beatless" },
+      { name: "Help", singer: "Beatless" },
+      { name: "Changes", singer: "2Pac" },
+      { name: "All Eyes On ME", singer: "2Pac" },
+      { name: "Dear Mama", singer: "2Pac" },
+      { name: "Without Me", singer: "Eminem" },
+      { name: "Lose Yourself", singer: "Eminem" },
+      { name: "Like Glue", singer: "Sean Paul" },
+      { name: "Temperature ", singer: "Sean Paul" },
+      { name: "Dilemma", singer: "Nelly" },
+      { name: "In Da Club", singer: "50 Cent" },
+      { name: "Angel", singer: "Shaggy" },
+      { name: "Slow Jamz", singer: "Twista" },
+      { name: "X", singer: "Xzibit" },
+      { name: "So Into You", singer: "Fabolous ft. Tamia" },
+      { name: "911", singer: "Wyclef Jean  ft. Mary J. Blige" },
+      { name: "Warning ", singer: "The Notorious B.I.G" },
+    ]
+    let songImLookingFor;
+
+
+  </script>
+</body>
+
+</html>

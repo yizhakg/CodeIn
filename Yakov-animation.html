@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      clear: both;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      background: cornflowerblue;
+      height: 400px;
+      width: 400px;
+      transform: rotateX(70deg);
+    }
+
+    #box {
+      position: absolute;
+      background: tomato;
+      height: 100px;
+      width: 100px;
+      transform: rotateX(-70deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="box"></div>
+  </div>
+  <button id="moveBtn" onclick="boxAnimation()">Play</button>
+  <button id="moveBtn" onclick="reverseBoxAnimation()">reverse</button>
+  <script>
+    function moveBoxLeftRight() {
+      console.log(`h:${horizon}-v:${vertical}`)
+      setIntervalLeftRight = setInterval(() => {
+        if ((horizon && leftRightValueBox <= 299) || (!horizon && leftRightValueBox >= 0)||(horizon && leftRightValueBox== 0)) {
+          if (horizon) {
+            leftRightValueBox++;
+            box.style.left = leftRightValueBox + "px";
+          }
+          else {
+            leftRightValueBox--;
+            box.style.left = leftRightValueBox + "px";
+          }
+        }
+        else {
+          horizon = !horizon;
+          moveBoxUpDown();
+          directionStopPlay = false;
+          clearInterval(setIntervalLeftRight);
+        }
+
+      }, 10);
+    }
+    function moveBoxUpDown() {
+      setIntervalUpDown = setInterval(() => {
+        if ((vertical && upDownValueBox <= 299) || (!vertical && upDownValueBox >= 0)) {
+          if (vertical) {
+            upDownValueBox++;
+            box.style.top = upDownValueBox + "px";
+          }
+          else {
+            upDownValueBox--;
+            box.style.top = upDownValueBox + "px";
+          }
+        }
+        else {
+          vertical = !vertical;
+          moveBoxLeftRight();
+          directionStopPlay = true;
+          clearInterval(setIntervalUpDown)
+        }
+
+      }, 10);
+
+    }
+
+    function boxAnimation() {
+      if (toggle) {
+        if (directionStopPlay) {
+          moveBoxLeftRight();
+        }
+        else {
+          moveBoxUpDown();
+        }
+        moveBtn.innerHTML = "Stop"
+      }
+      else {
+        clearInterval(setIntervalUpDown);
+        clearInterval(setIntervalLeftRight);
+        moveBtn.innerHTML = "Play"
+
+      }
+      toggle = !toggle;
+    }
+    function reverseBoxAnimation() {
+      
+      vertical = !vertical;
+      horizon = !horizon;
+    }
+
+    let leftRightValueBox = 0;
+    let upDownValueBox = 0;
+    let setIntervalLeftRight;
+    let setIntervalUpDown;
+    let toggle = true;
+    let directionStopPlay = true;
+    let horizon = true;
+    let vertical = true;
+  </script>
+</body>
+
+</html>

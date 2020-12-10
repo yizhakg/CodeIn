@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>diceRoll</title>
+</head>
+<style>
+  body{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  .headLine{ margin: 30px;}
+  .dices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .dices>div{ margin: 30px;}
+</style>
+<body>
+  <h1 class="headLine">Dice Roll Generator</h1>
+  <div class="dices">
+    <div id="firstDice">
+      <h3>Player 1</h3>
+      <img src="./diceRollPic/0.jpeg" alt="">
+    </div>
+    <div id="secondDice">
+      <h3>Player 2</h3>
+      <img src="./diceRollPic/0.jpeg" alt="">
+    </div>
+  </div>
+  <h3 id="winner"> Who Is The Winner?</h3>
+  <button onclick="rollDice()">Roll</button>
+  <script>
+    function rollDice(){
+      let dices=document.getElementsByTagName("img");
+      let firstDice=Math.floor(Math.random()*(6))+1;
+      let secondDice=Math.floor(Math.random()*(6))+1;
+      dices[0].outerHTML=`<img src="./diceRollPic/${firstDice}.jpeg" alt="">`
+      dices[1].outerHTML=`<img src="./diceRollPic/${secondDice}.jpeg" alt="">`
+      if(firstDice>secondDice){
+        document.getElementById("winner").innerText=`Player 1 Is The Winner`
+      }
+      else if(firstDice<secondDice){
+        document.getElementById("winner").innerText=`Player 2 Is The Winner`
+      }
+      else{
+        document.getElementById("winner").innerText=`It's A Drew`
+      }
+
+    }
+
+  </script>
+</body>
+</html>

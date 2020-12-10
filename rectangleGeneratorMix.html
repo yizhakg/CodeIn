@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yakovPrac-rectangleGeneratorMix</title>
+</head>
+<body>
+
+  <!-- תרגיל 10/11/2020 -->
+  <div>
+    <div id="top"></div>
+    <div id="main"></div>
+  </div>
+  <script>
+// תרגיל 10/11/2020
+// 1. ליצור אלמנט ראשי עם ID
+// 2. להוסיף אלמנט של קלט
+// 3. להוסיף אלמנט של כפתור
+// 4. בלחיצה על הכפתור ליצור אלמנטים של רשימה בצורה דינמית כמספר הקלט
+// 5. לעשות עיצוב לאלמנטים של הרשימה
+
+function mixColors(){
+  var colors=["red","blue","green","black","orange","aliceblue","aquamarine","crimson","gray","lemonchiffon","magenta","palevioletred","steelblue","salmon"]
+  var divClass= document.getElementsByClassName("divSqr");
+  for(var i=0;i<divClass.length;i++){
+    var mixed= colors[Math.floor(Math.random()*(colors.length-1))];
+    divClass[i].style.backgroundColor = mixed;
+  }
+}
+function DivSize(){
+  var height=document.getElementById("height").value;
+  var width= document.getElementById("width").value;
+var divClass= document.getElementsByClassName("divSqr");
+for(var i=0;i<divClass.length;i++){
+  divClass[i].style=`height:${height}px;width:${width}px;border:1px solid black`
+}
+}
+
+function insertDiv(){
+var divs='';
+amount=document.getElementById("amount").value;
+  for(let i=0; i<amount;i++){
+divs+=`<div class="divSqr"></div>`;
+  }
+  mainId.innerHTML= divs;
+}
+var mainId=document.getElementById("main");
+var topId= document.getElementById("top");
+topId.innerHTML=`<h1>Welcome to Rectangle Generator </h1><input id="amount" type="number" placeholder="amount"> 
+<input id="height" type="number" placeholder="height"> 
+<input id="width" type="number" placeholder="width">
+<button onclick="insertDiv(), DivSize()">generate</button>
+</div>
+<button onclick="mixColors()">Mix Colors</button>`;
+topId.style=" text-align: center;margin:100px;"
+mainId.style="display: flex;flex-wrap: wrap;justify-content: center;margin:100px;";
+
+var h1Element=document.getElementsByTagName("h1");
+var buttonElement=document.getElementsByTagName("button");
+for(i=0;i<h1Element.length;i++){
+  h1Element[i].style="font-size: 30px; color: blue; font-weight: 800;" 
+}
+for(i=0;i<buttonElement.length;i++){
+  buttonElement[i].style="font-size: 30px; color: grey; font-weight: 800;" 
+}
+h1Element[1].style.color="yellow";
+buttonElement[0].style.backgroundColor="green"
+
+var bodyChilds= document.body.childNodes;
+var second = bodyChilds[1];
+second.innerHTML="<p>number 1</p><h1>number 2</h1><div>number 3</div><div>number 4</div><h2>number 5</h2>"
+second.childNodes[0].style.color="red"
+second.childNodes[2].textContent="inerText";
+
+
+   </script>
+
+</body>
+
+</html>

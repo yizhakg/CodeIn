@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+<link rel="stylesheet" href="calculator _v2.0.css">
+</head>
+
+<body>
+  <div class="calGrid">
+    <div class="resultDiv">
+      <h3 id=result>0</h3>
+      <h2 id="mainResult"></h2>
+    </div>
+    <button class="calOperator">+</button>
+    <button class="calOperator">-</button>
+    <button class="calOperator">×</button>
+    <button class="calOperator">÷</button>
+    <button class="calNum">7</button>
+    <button class="calNum">8</button>
+    <button class="calNum">9</button>
+    <button style="grid-area: 3/4/7/4;border-bottom-right-radius: 10px; background: chocolate;"
+      onclick="insertOperator(this.innerHTML),displayResult()">=</button>
+    <button class="calNum">4</button>
+    <button class="calNum">5</button>
+    <button class="calNum">6</button>
+    <button class="calNum">1</button>
+    <button class="calNum">2</button>
+    <button class="calNum">3</button>
+    <button style="border-bottom-left-radius: 10px;" class="calNum">0</button>
+    <button onclick="dotInsert()">.</button>
+    <button onclick="resetCal(),mainResult.innerHTML=''">AC</button>
+  </div>
+  <script src="calculator _v2.0.js"></script>
+</body>
+
+</html>

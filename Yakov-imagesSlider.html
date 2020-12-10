@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yakov-imagesSlider</title>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #sliderPic {
+      height: 550px;
+      width: 550px;
+    }
+    button{
+      height: 100px;
+      margin: 10px;
+    }
+    img:hover,button{
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" placeholder="Upper Case Magic Change">
+  <button>prev</button>
+  <img id="sliderPic" src="./imgSlider/1.jpg" alt="">
+  <button>next</button>
+  <script>
+
+    function sliderImg(action) {
+
+      if (action == '+') {
+        if (index >= imgs.length - 1) {
+          index = -1
+        }
+        document.getElementById("sliderPic").src = imgs[++index]
+
+      }
+      if (action == '-') {
+        if (index <= 0) {
+          index = imgs.length
+        }
+        document.getElementById("sliderPic").src = imgs[--index]
+      }
+      console.log(index)
+    }
+function upperCaseChange(){
+  document.querySelector("input").value=document.querySelector("input").value.toUpperCase();
+}
+window.onload=()=>{
+  alert("Welcome To The SliderImg")
+  document.getElementsByTagName("button")[0].addEventListener("click", () => sliderImg('-'));
+    document.getElementsByTagName("button")[1].addEventListener("click", () => sliderImg('+'));
+    document.getElementById("sliderPic").addEventListener("click", () => clearInterval(interImg));
+    document.getElementById("sliderPic").addEventListener("dblclick", () => interImg = setInterval(() => { sliderImg('+') }, 1000));
+    interImg = setInterval(() => { sliderImg('+') }, 1000);
+    document.querySelector("input").addEventListener("input",upperCaseChange)
+}
+window.onbeforeunload = ()=> {return "hello"};
+   
+    let index = 0;
+    let imgs = [
+      "./imgSlider/1.jpg",
+      "./imgSlider/2.jpg",
+      "./imgSlider/3.jpg",
+      "./imgSlider/4.jpg",
+      "./imgSlider/5.jpg",
+      "./imgSlider/6.jpg",
+      "./imgSlider/7.jpg",
+      "./imgSlider/8.jpg",
+      "./imgSlider/9.jpg",
+      "./imgSlider/10.jpg",
+      "./imgSlider/11.jpg",
+      "./imgSlider/12.jpg",
+    ]
+    let interImg;
+    
+  </script>
+</body>
+
+</html>

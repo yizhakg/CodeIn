@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <script>
+        function numberMessage(buttonId) {
+            let myNumber = Number(buttonId.innerText);
+            console.log(myNumber)
+            switch (myNumber) {
+                case 0:
+                    document.getElementById("numberMessageText").innerHTML = " נמוך מדי";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 1:
+                    document.getElementById("numberMessageText").innerHTML = "כמעט אבל לא";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 2:
+                    document.getElementById("numberMessageText").innerHTML = "עוד קצת והיית זוכה";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 3:
+                    document.getElementById("numberMessageText").innerHTML = "זכית במקום הראשון";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 4:
+                    document.getElementById("numberMessageText").innerHTML = "הגזמת, יותר מדי";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 5:
+                    document.getElementById("numberMessageText").innerHTML = "אולי מקום שני, עוד קצת";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 6:
+                    document.getElementById("numberMessageText").innerHTML = "ברכות! מקום שני";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 7:
+                    document.getElementById("numberMessageText").innerHTML = "גם שלישי זה טוב";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 8:
+                    document.getElementById("numberMessageText").innerHTML = "איפה הלכת תנסה שוב";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 9:
+                    document.getElementById("numberMessageText").innerHTML = "לא בא לך מקום ראשון ?";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+                case 10:
+                    document.getElementById("numberMessageText").innerHTML = "רחוק מידי תחזור";
+                    document.getElementById("numberMessageImg").src=`./imgSlider/${myNumber+1}.jpg`
+                    break;
+
+            }
+        }
+        window.onload = () => {
+            var numArray = [];
+            var numArrayLenght = 10;
+            for (var i = 0; i <= numArrayLenght; i++) {
+                numArray.push(Math.floor(Math.random() * 11));
+            }
+
+            document.writeln(numArray.sort((firstNumber, secondNumber) => { return firstNumber - secondNumber }));
+            document.writeln("<br>");
+            numArray.sort(function (a, b) { return 0.5 - Math.random() })
+            for (var i = 0; i <= numArrayLenght; i++) {
+                document.body.innerHTML += `<button onclick="numberMessage(this)" >${numArray[i]}</button>`
+            }
+            document.body.innerHTML += `<h1 id=numberMessageText></h1>`
+            document.body.innerHTML += `<img style=height:200px;width=auto; id=numberMessageImg   alt= >`
+        }
+
+    </script>
+</body>
+
+</html>

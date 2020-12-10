@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>imagesSlider</title>
+  <style>
+    .img-slider {
+      position: absolute;
+      top: 10px;
+      right: 30vw;
+      width: 550px;
+      height: 550px;
+      overflow: hidden;
+    }
+    .buttons{
+      position: absolute;
+      height: 550px;
+      width: 550px;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .buttons:hover{
+      opacity: 1;
+    }
+
+    .imgButton{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 550px;
+      width: 70px;
+      font-size: 50px;
+      font-weight: 900;
+      background-color: unset;
+      border: unset;
+      color: white;
+ 
+    }
+    .imgButton:hover{
+      cursor: pointer;
+    }
+    .images {
+      position: absolute;
+      top: 0;
+      left: 0px;
+      display: flex;
+      transition: left 1s;
+    }
+    img {
+      height: 550px;
+      width: 550px;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="img-slider">
+      <div class="images">
+        <img src="./imgSlider/1.jpg" alt="">
+        <img src="./imgSlider/2.jpg" alt="">
+        <img src="./imgSlider/3.jpg" alt="">
+        <img src="./imgSlider/4.jpg" alt="">
+        <img src="./imgSlider/5.jpg" alt="">
+        <img src="./imgSlider/6.jpg" alt="">
+        <img src="./imgSlider/7.jpg" alt="">
+        <img src="./imgSlider/8.jpg" alt="">
+        <img src="./imgSlider/9.jpg" alt="">
+        <img src="./imgSlider/10.jpg" alt="">
+        <img src="./imgSlider/11.jpg" alt="">
+        <img src="./imgSlider/12.jpg" alt="">
+      </div>
+     <div class="buttons">
+      <div class="imgButton" onclick="prevImg()" style="left: 0;background: linear-gradient(90deg,#99999998 0,transparent);"><</div>
+      <div class="imgButton" onclick="nexImg()" style="right: 0;background: linear-gradient(270deg,#99999998 0,transparent);">></div>
+     </div>
+    </div>
+
+  <script>
+    let index = 0;
+    let numbeOfPictures=document.getElementsByTagName("img").length;
+    function nexImg() {
+      index+=-550;
+      document.getElementsByClassName("images")[0].style.left = `${index % (numbeOfPictures*-550)}px`;
+    }
+    function prevImg() {
+      index+=550;
+      if (index >0)
+        index = (numbeOfPictures*-550);
+      document.getElementsByClassName("images")[0].style.left = `${index % (numbeOfPictures*-550)}px`;
+    }
+  
+  </script>
+</body>
+
+</html>

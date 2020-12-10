@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yakovPrac-Colors&Divs</title>
+</head>
+<style >
+  *{
+    text-align: center;
+    margin: 5px auto;
+   
+  }
+  div,td{
+    border-radius: 50%;
+  }
+  
+</style>
+<body>
+
+  <!-- תרגיל 11/11 -->
+<div >
+</div><div>
+</div>
+
+  <script> 
+
+// 11/11 
+// . ליצור 2 DIV
+// להכניס בDIV הראשון קלט וכפתור.
+// לחיצה על הכפתור תראה DIV בצבע שהמשתמש הקליד בקלט, בתוך הDIV השני .
+// מתחת לDIV שהופיע  יהיה כפתור שמחליף את הצבע של הDIV לצהוב.
+// יש להשתמש ב nextSiblinig.
+// *אתגר: צרו מתחת לכפתור כמה DIV בצבע””ים שונים,
+// שכאשר מרחפים מעליהם עם העכבר, הצבע של הDIV למעלה משתנה בהתאם.
+
+function divUnder(){
+  div1.nextSibling.innerHTML=`<div id=colorDiv1></div><button>Change To Yellow</button><button>shuffle</button><button>stop shuffle</button>
+  <div id="divFather" style="display:flex; flex-wrap: wrap; justify-content: flex-start;">
+</div>`
+let colorDiv1=document.getElementById("colorDiv1");
+colorDiv1.style="height:200px;width:200px"
+divColor(colorValue.value)
+document.getElementsByTagName("button")[1].addEventListener("click",()=>divColor("yellow"));
+document.getElementsByTagName("button")[2].addEventListener("click",randomEverytime);
+document.getElementsByTagName("button")[3].addEventListener("click",()=>clearInterval(shuffle));
+}
+
+function divColor(color){
+  let colorDiv1=document.getElementById("colorDiv1");
+  colorDiv1.style.backgroundColor=color;
+}
+function ColorShuffle(){
+let divFather=document.getElementById("divFather");
+divFather.innerText=''
+let count = Math.floor(Math.random()*50)+1
+for(i=0;i<count;i++){
+  let color=`#${Math.floor(Math.random() * (999 - 100) ) + 100}`
+  divFather.innerHTML+= `<div style="background-color:${color};height:100px;width:100px;"></div>`
+}
+for(i=0;i<count;i++){
+  let color = divFather.childNodes[i].style.backgroundColor
+  divFather.childNodes[i].addEventListener("mouseover",()=>divColor(color))
+}
+}
+
+function randomEverytime(){
+  clearInterval(shuffle)
+  shuffle = setInterval(() => {
+    ColorShuffle()
+  }, 1000);
+}
+
+let div1=document.getElementsByTagName("div")[0];
+div1.innerHTML=`<h1>Colors&Divs</h1><h4>pick a color and hit the button</h4><input id="colorValue" type="color"><button>submit</button>`;
+document.getElementsByTagName("button")[0].addEventListener("click",divUnder);
+document.getElementsByTagName("button")[0].addEventListener("click",ColorShuffle);
+let colorValue=document.getElementById("colorValue");
+let shuffle;
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carsProject</title>
+  <link rel="stylesheet" href="carsProject.css">
+  </head>
+  <div id="form">
+
+    <label for="carTypeId">Car Type</label>
+    <select id="carTypeId" name="carTypeId" required>
+      <option value="Car">Car</option>
+      <option value="Bike">Bike</option>
+      <option value="AirPlane" selected>AirPlane</option>
+    </select>
+
+    <label for="wheelsNumberId">Wheels Number</label>
+    <input required type="number" id="wheelsNumberId" name="wheelsNumberId">
+
+    <label for="engineSizeId">Engine Size</label>
+    <input required type="number" id="engineSizeId" name="engineSizeId">
+
+    <label for="colorOfVehicleId">Color Of Vehicle</label>
+    <input required type="color" id="colorOfVehicleId" name="colorOfVehicleId">
+
+    <label for="carNameId">Car Name</label>
+    <input required type="text" id="carNameId" name="carNameId">
+    <button onclick="addVehicleToTable()">order</button>
+  </div>
+  <div class="tableOverFlow">
+    <table>
+      <tbody id="userTable">
+        <tr>
+          <th>Car Type</th>
+          <th>Wheels Number</th>
+          <th>Engine Size</th>
+          <th>Color</th>
+          <th>Car Name</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="carsProject.js"> </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    text-align: center;
+    font-weight: 800;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    }
+  body{
+    margin: 0;
+    padding: 0;
+  background: rgb(34,193,195);
+background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    background-size: 100%;
+  }
+  h1{ text-transform: uppercase; margin: 15px 0 0 30px;}
+  .table{
+    margin: 40px auto;
+    display: grid;
+    height: 280px;
+    width: 280px;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+  }
+  button{
+    background-color: rgba(255, 255, 0, 0.288);
+    font-size: 30px;
+    color: white;
+  }
+  #whoWon{
+    color: white;
+    margin: 20px auto;
+    font-size: 50px;
+  }
+</style>
+<body>
+  <h1>let's play a game</h1>
+  <div class="table">
+<button id="00" onclick="x_o(`00`); this.onclick=null;"></button>
+<button id="01" onclick="x_o(`01`); this.onclick=null;"></button>
+<button id="02" onclick="x_o(`02`); this.onclick=null;"></button>
+<button id="10" onclick="x_o(`10`); this.onclick=null;"></button>
+<button id="11" onclick="x_o(`11`); this.onclick=null;"></button>
+<button id="12" onclick="x_o(`12`); this.onclick=null;"></button>
+<button id="20" onclick="x_o(`20`); this.onclick=null;"></button>
+<button id="21" onclick="x_o(`21`); this.onclick=null;"></button>
+<button id="22" onclick="x_o(`22`); this.onclick=null;"></button>
+  </div>
+  <button onclick="window.location.reload()">reset</button>
+  <div id="whoWon"></div>
+
+  <div id="test"></div>
+  <script>
+    
+function gameXO(game) {
+
+for (let i = 0; i < 3; i++) {
+  if (game[i][0] == game[i][1] && game[i][1] == game[i][2] && game[i][0] != " ") {
+    document.getElementById(`${i}0`).style.backgroundColor="#0F7173";
+    document.getElementById(`${i}1`).style.backgroundColor="#0F7173";
+    document.getElementById(`${i}2`).style.backgroundColor="#0F7173";
+    return "winner";
+  }
+}
+for (let i = 0; i < 3; i++) {
+  if (game[0][i] == game[1][i] && game[1][i] == game[2][i] && game[0][i] != " ") {
+    document.getElementById(`0${i}`).style.backgroundColor="#0F7173";
+    document.getElementById(`1${i}`).style.backgroundColor="#0F7173";
+    document.getElementById(`2${i}`).style.backgroundColor="#0F7173";
+    return "winner";
+  }
+}
+if (game[0][0] == game[1][1] && game[1][1] == game[2][2] && game[1][1] != " ") {
+  document.getElementById(`00`).style.backgroundColor="#0F7173";
+  document.getElementById(`11`).style.backgroundColor="#0F7173";
+  document.getElementById(`22`).style.backgroundColor="#0F7173";
+  return "winner"
+}
+if(game[0][2] == game[1][1] && game[1][1] == game[2][0] && game[1][1] != " " ){
+  document.getElementById(`02`).style.backgroundColor="#0F7173";
+  document.getElementById(`11`).style.backgroundColor="#0F7173";
+  document.getElementById(`20`).style.backgroundColor="#0F7173";
+  return "winner"
+}
+return "no winner"
+}
+
+const game=[
+[" "," "," "],
+[" "," "," "],
+[" "," "," "],
+]
+
+var x="O";
+function x_o(id){
+if(x=="O"){
+  x="X";
+}
+else if(x=="X"){
+  x="O"
+}
+game[id.substr(0,1)][id.substr(1,1)]=x
+document.getElementById(id).innerText=x;
+
+if(gameXO(game) =="winner" && (x=="O" || x=="X")){
+document.getElementById("whoWon").innerHTML=`${x} is the WINNER`;
+x=null;
+}
+
+}
+  </script>
+</body>
+</html>

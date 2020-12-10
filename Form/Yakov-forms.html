@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+  <script src="https://kit.fontawesome.com/96c2cf9a06.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      font-weight: 800;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    body {
+      text-align: center;
+
+    }
+
+    form {
+      font-size: 13px;
+      border: 3px solid rgb(115, 177, 177);
+      border-radius: 10px;
+      margin: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      color: rgb(115, 177, 177);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    form>input {
+      font-size: 13px;
+      text-align: center;
+      border: 1px solid rgb(115, 177, 177);
+      border-radius: 3px;
+      background-color: rgb(240, 240, 240);
+    }
+
+    button {
+      text-transform: uppercase;
+      background-color: rgb(115, 177, 177);
+      border-radius: 5px;
+      width: 80px;
+      height: 40px;
+      color: rgb(255, 255, 255);
+      border: 1px solid white;
+      font-size: 13px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    form>h1 {
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 900;
+      border-bottom: 1px solid rgb(115, 177, 177);
+      padding-bottom: 15px;
+    }
+
+    span {
+      height: 10px;
+    }
+
+    #passwordSpan {
+      position: relative;
+      bottom: 38px;
+      left: 105px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form" method="POST" action="./x_o_game.html">
+    <h1>create account</h1>
+    <!-- <label id="firstNameLable" for="firstName"><span style="display: none;">*</span> First name</label>
+      <input id="firstName" type="text" name="firstName" required>
+      <span id="firstNameSpan"></span></br>
+
+    <label for="lastName">Last name</label>
+    <input id="lastName" type="text" name="lastName" required>
+    <span id="lastNameSpan"></span></br> -->
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email"></br>
+
+    <label for="phone">Phone</label>
+    <input id="phone" type="tel" name="phone" pattern="[05]{2}[0-9]{1}[0-9]{7}"></br>
+
+    <span>
+      <label for="photo">Profile Photo</label>
+      <input id="photo" type="file" name="photo" style="border: unset;width: 200px;">
+    </span></br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required></br>
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required></br><span id="passwordSpan"></span>
+
+    <div>
+      <button type="submit">submit</button>
+      <button type="reset">reset</button>
+    </div>
+  </form>
+  <script>
+
+    function checkFirstName() {
+      let firstNameSpan = document.getElementById("firstNameSpan")
+      if (firstName.value.toLowerCase() != "yizhak" && firstName.value.toLowerCase() != "") {
+        firstNameSpan.style.color = "red";
+        firstNameSpan.innerHTML = "You  Must Be Yizhak";
+        firstNameLable.style.color = "red";
+        firstNameLable.firstChild.style.display = "unset"
+        return false
+      }
+      firstNameLable.style.color = "unset";
+      firstNameSpan.innerHTML = "";
+      firstNameLable.firstChild.style.display = "none";
+      return false
+
+    }
+
+    function checkLastName() {
+      let lastNameSpan = document.getElementById("lastNameSpan")
+      if (lastName.value.toLowerCase() != "gete" && lastName.value.toLowerCase() != "") {
+        lastNameSpan.style.color = "red";
+        lastNameSpan.innerHTML = "You  Must Be Gete";
+        return false
+      }
+
+      lastNameSpan.innerHTML = ""
+      return false
+
+    }
+
+    function validPasswords() {
+      let passwordSpan = document.getElementById("passwordSpan")
+      if (password.value == confirmPassword.value) {
+        passwordSpan.style.color = "green"
+        passwordSpan.innerHTML = `<i class="fas fa-check"></i>`
+        return true
+      }
+      else {
+        passwordSpan.style.color = "red"
+        passwordSpan.innerHTML = `<i class="fas fa-times"></i>`
+        return false
+      }
+    }
+
+    function validate() {
+      if (validPasswords() && checkFirstName())
+        return true
+      else
+        return false
+    }
+
+    function clearAlerts() {
+      firstNameSpan.innerHTML = "";
+      lastNameSpan.innerHTML = "";
+      passwordSpan.innerHTML = "";
+
+    }
+    function formInputCreat(arrayOfInputs) {
+      for (i = 0; i < arrayOfInputs.length; i++) {
+        document.getElementById("form").innerHTML += ` <label id="${arrayOfInputs[i]}Lable" for="${arrayOfInputs[i]}"><span style="display: none;">*</span> ${arrayOfInputs[i]}</label>
+    <input id="${arrayOfInputs[i]}" type="text" name="${arrayOfInputs[i]}" required>
+    <span id="${arrayOfInputs[i]}Span"></span></br>`
+
+      }
+    }
+    window.onload = () => {
+      firstName.addEventListener("change", checkFirstName);
+      lastName.addEventListener("change", checkLastName);
+      confirmPassword.addEventListener("input", validPasswords)
+      formBody.addEventListener("submit", () => { return validate() })
+      formBody.addEventListener("reset", () => { return clearAlerts() })
+    }
+    let inputArray = ['firstName', 'lastName']
+    formInputCreat(inputArray);
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let email = document.getElementById("email");
+    let phone = document.getElementById("phone");
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirmPassword");
+    let firstNameLable = document.getElementById("firstNameLable");
+    let formBody = document.getElementById("form");
+  </script>
+</body>
+
+</html>

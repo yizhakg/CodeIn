@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  clear: both;
+  margin: 0;
+}
+
+.calGrid {
+  height: 90vmin;
+  width: 70vmin;
+  margin: 10px auto;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.resultDiv {
+  overflow: hidden;
+  word-wrap: break-word;
+  text-align: right;
+  background: black;
+  grid-area: 1/1/1/5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  font-size: 30px;
+}
+
+button:nth-child(2),
+button:nth-child(3),
+button:nth-child(4),
+button:nth-child(5) {
+  background: rgb(211, 211, 211);
+}
+
+button {
+  background: white;
+  font-size: 30px;
+  font-weight: 800;
+  cursor: pointer;
+}

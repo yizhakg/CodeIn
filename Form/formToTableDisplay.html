@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+  <script src="https://kit.fontawesome.com/96c2cf9a06.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      font-weight: 800;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    body {
+      text-align: center;
+
+    }
+
+    #form {
+      font-size: 13px;
+      border: 3px solid rgb(115, 177, 177);
+      border-radius: 10px;
+      margin: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      color: rgb(115, 177, 177);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    #form>input {
+      font-size: 13px;
+      text-align: center;
+      border: 1px solid rgb(115, 177, 177);
+      border-radius: 3px;
+      background-color: rgb(240, 240, 240);
+    }
+
+    button {
+      text-transform: uppercase;
+      background-color: rgb(115, 177, 177);
+      border-radius: 5px;
+      width: 80px;
+      height: 40px;
+      color: rgb(255, 255, 255);
+      border: 1px solid white;
+      font-size: 13px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    #form>h1 {
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 900;
+      border-bottom: 1px solid rgb(115, 177, 177);
+      padding-bottom: 15px;
+    }
+
+    span {
+      height: 10px;
+    }
+
+    #passwordSpan {
+      position: relative;
+      bottom: 38px;
+      left: 105px;
+    }
+    table{
+      margin: 20px auto;
+    }
+    table,tr,td,th{
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th{
+    padding: 2px 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="form">
+    <h1>create account</h1>
+    <label id="firstNameLable" for="firstName"><span style="display: none;">*</span> First name</label>
+    <input id="firstName" type="text" name="firstName" required>
+    <span id="firstNameSpan"></span></br>
+
+    <label for="lastName">Last name</label>
+    <input id="lastName" type="text" name="lastName" required>
+    <span id="lastNameSpan"></span></br>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email"></br>
+
+    <label for="phone">Phone</label>
+    <input id="phone" type="tel" name="phone" pattern="[05]{2}[0-9]{1}[0-9]{7}"></br>
+
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age">
+    <br>
+    <div>
+      <button onclick="creatObjectPerson()">submit</button>
+    </div>
+  </div>
+  <table>
+    <tbody id="userTable">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Age</th>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    class Person {
+      firstName;
+      lastName;
+      email;
+      phone;
+      age;
+      constructor(firstName, lastName, email, phone, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.age = age;
+      }
+      get alertFullName() {
+        alert(`${this.creatFullName()}`)
+      }
+      creatFullName() {
+        return "Hello Mr." + this.firstName + " " + this.lastName
+      }
+    }
+    function creatObjectPerson() {
+      newPerson = new Person(firstName.value, lastName.value, email.value, phone.value, age.value)
+      printObject()
+    }
+    function printObject() {
+      userTable.innerHTML += '<tr></tr>'
+      for (const key in newPerson) {
+        userTable.lastChild.innerHTML += `<td>${newPerson[key]}</td>`
+      }
+    }
+    let newPerson;
+  </script>
+</body>
+
+</html>

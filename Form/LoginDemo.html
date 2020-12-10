@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    #form{
+      margin: auto;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    input{
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="form">
+    <h1 style="text-align: center;">Login</h1>
+    <label for="loginName">Name:</label>
+    <input type="text" name="loginName" id="loginName"></br>
+    <label for="loginPassword">Password:</label>
+    <input type="password" name="loginPassword" id="loginPassword"></br>
+    <label for="loginEmail">Email:</label>
+    <input type="email" name="loginEmail" id="loginEmail"></br>
+    <label for="loginUserName">User Name:</label>
+    <input type="text" name="loginUserName" id="loginUserName"></br>
+    <button onclick="Field.loginAttempt()" style="width: 100px;margin: auto;cursor: pointer;"><h1 style="margin: 0;">Login</h1></button>
+  </div>
+  <script>
+    class Field {
+      loginName;
+      loginPassword;
+      loginEmail;
+      loginUserName;
+      constructor(loginName = "", loginPassword = "", loginEmail = "", loginUserName = "") {
+        this.loginName = loginName;
+        this.loginPassword = loginPassword;
+        this.loginEmail = loginEmail;
+        this.loginUserName = loginUserName;
+      }
+      static loginAttempt(){
+        tryToLogin.loginName=loginName.value.toLowerCase();
+        tryToLogin.loginPassword=loginPassword.value.toLowerCase();
+        tryToLogin.loginEmail=loginEmail.value.toLowerCase();
+        tryToLogin.loginUserName=loginUserName.value.toLowerCase();
+        Field.isLoginOk()
+      }
+      static isLoginOk(){
+        if(JSON.stringify(loginSelector)==JSON.stringify(tryToLogin)){
+          alert("Welcome To The Site 🙃")
+        }
+        else{
+          alert("Please Try Again ⛔")
+        }
+      }
+    }
+    const loginSelector= new Field("yizhak","123456","y@g.com","yizhakg")
+    const tryToLogin=new Field();
+  </script>
+</body>
+
+</html>
