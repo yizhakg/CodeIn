@@ -13,7 +13,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 .triviaCards{
   margin: 10px;
-  height: 270px;
+  height: 280px;
   width: 200px;
   border: 1px grey solid;
   display: flex;

@@ -26,8 +26,8 @@ TRIVIA.forEach((item, key) => {
    insertCategoriesItem(temp,item)
   });
   temp.addEventListener("mouseout", () => {
- 
     temp.innerHTML = `${key}<br>`; 
+       document.getElementById("question").innerHTML="";
   });
 temp.addEventListener("click",()=>popAQue(`${key}`));
 i++;
