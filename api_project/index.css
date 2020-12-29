@@ -5,6 +5,10 @@ body{
   font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
   background-color: rgb(32, 35, 41);
 }
+h1,h2,h3,h4,h5,h6{
+  margin: 7px;
+  padding: 0;
+}
 .header{
 background-color: rgb(245, 245, 245);
 overflow: hidden;
@@ -23,6 +27,33 @@ height: 300px;
 width: auto;
 margin:  0 auto;
 opacity: .5;
+}
+.searchBox{
+  background: #EAEAEA;
+  margin: 10px;
+  border-radius: 10px;
+}
+.containBox{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: white;
+}
+#search{
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 60%;
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+}
+.containBox>button{
+  border: none;
+  outline: none;
+  font-size: 30px;
+  background: none;
+  cursor: pointer;
 }
 .container{
   display: grid;
@@ -90,9 +121,12 @@ opacity: .5;
 .item:hover .data{
   opacity: 1;
 }
-
-footer{
-
+#openImg{
+  display: block;
+  height: 100vh;
+  width: auto;
+  margin: auto;
+  transition: 3s height;
 }
 footer>img{
   height: 100px;
