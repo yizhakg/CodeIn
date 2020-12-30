@@ -9,7 +9,7 @@ h1,h2,h3,h4,h5,h6{
   margin: 7px;
   padding: 0;
 }
-.header{
+#header{
 background-color: rgb(245, 245, 245);
 overflow: hidden;
 }
@@ -28,12 +28,12 @@ width: auto;
 margin:  0 auto;
 opacity: .5;
 }
-.searchBox{
+#searchBox{
   background: #EAEAEA;
   margin: 10px;
   border-radius: 10px;
 }
-.containBox{
+#containBox{
   display: flex;
   justify-content: center;
   padding: 10px;
