@@ -1,12 +1,9 @@
 let url = 'https://rickandmortyapi.com/api/character'
-let data;
+let data = [];
+let charactorId;
 window.onload = () => {
   enviorment();
-  setTimeout(() => {
-    document.getElementById("openImg").style.height = "100px";
-    getData();
-
-  }, 3000)
+  setTimeout(() => { getData() }, 1000)
 
 }
 function enviorment() {
@@ -16,28 +13,34 @@ function enviorment() {
   main.innerHTML += `<div id="container" class="container"></div>`
   header.innerHTML += `<h1 class="title">Rick and Morty Character</h1>`
   header.innerHTML += `<img class="title_img"
-src="https://lh3.googleusercontent.com/proxy/5F4EWSR_JGOOC6PqUvQ160dl-dGHBpkwQu04-Zf7ygFYh_53ukHgXTIVlJ9fWDJNvZeY7xFxvhYhEmw2FnrYWOCaJdmdAPaHMLCtR2Zlw1gedCGu4gJ0u6zbWi4LhA8"
+src="https://miro.medium.com/max/840/1*d5g31wvUpmILqzge216Fug.png"
 alt="">`
-  searchBox.innerHTML += `<div id="containBox"></div>`
-  containBox.innerHTML += `<input type="search" name="serch" id="search" placeholder="search...">`
-  containBox.innerHTML += `<button id="searchButton" onclick="searchCharacter()"> &#x1F50D </button>`
+  searchBox.innerHTML += `<form onsubmit="searchCharacter()" id="containBox" action="javascript:void(0)"></form>`
+  containBox.innerHTML += `<input type="search" name="serch" id="search" placeholder="search..." minlength="3">`
+  containBox.innerHTML += `<button type="submit" id="searchButton"> &#x1F50D </button>`
   footer.innerHTML += `<img src="https://assets.stickpng.com/images/58f37720a4fa116215a9240f.png" alt="">`
 }
 
 
-function getApi() {
-  return fetch(url)
-    .then(res => res.json()).then(res => res.results)
+function getApi(addedData) {
+  console.log(url + "" + addedData);
+  return fetch(url + "" + addedData)
+    .then(res => res.json())
 }
+
 async function getData() {
   try {
-    data = await getApi();
-    addCharacter(data);
+    for (let i = 1; i <= 3; i++) {
+      data = data.concat(await getApi("?page=" + i).then(res => res.results))
+    }
+    charactorId = await fetch("./index.json").then((res) => res.json());
   }
   catch (error) {
     console.log(error);
   }
   finally {
+    document.getElementById("openImg").style.height = "100px";
+    addCharacter(data);
   }
 }
 function addCharacter(charactorArray) {
@@ -60,19 +63,34 @@ function addCharacter(charactorArray) {
     `
   }
 }
+async function getSearchData(addedData) {
+  let searchData;
+  try {
+    searchData = await getApi(addedData);
+    console.log(searchData);
+  }
+  catch (error) {
+    console.log(error);
+  }
+  finally {
+    document.getElementById("openImg").style.height = "100px";
+    addCharacter(searchData);
+  }
+}
+
 function searchCharacter() {
   searchValue = document.getElementById("search").value.toLowerCase().trim();
   if (searchValue == "") {
     addCharacter(data)
     return;
   }
-  let resultArray = []
-  data.forEach(charactor => {
-    let name = charactor.name.toLowerCase();
+  let resultString = ""
+  for (const key in charactorId) {
+    let name = charactorId[key].toLowerCase();
     if (name.indexOf(searchValue) != -1) {
-      resultArray.push(charactor)
+      resultString += `${key},`
     }
-  });
-  addCharacter(resultArray)
+  }
+  resultString = "/" + resultString.substring(0, resultString.length - 1);
+  getSearchData(resultString)
 }
-
