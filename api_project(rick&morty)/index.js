@@ -1,16 +1,12 @@
-
-
 function getApi() {
   return fetch(url)
     .then(res => res.json()).then(res => res.results)
 }
 async function getData() {
-  await setTimeout(()=>{},1000)
   try {
     data = await getApi();
   }
   catch (rej) {
-
   }
   finally {
     addCharacter(data);
@@ -52,11 +48,8 @@ function searchCharacter() {
   });
   addCharacter(resultArray)
 }
-
-
 let url = 'https://rickandmortyapi.com/api/character'
 let data;
-
 setTimeout(()=>{
   document.getElementById("openImg").style.height="100px"
   getData();
