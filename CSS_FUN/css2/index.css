@@ -1,0 +1,85 @@
+*{
+  clear: both;
+  box-sizing: border-box;
+}
+body{
+  margin:0;
+  padding: 0;
+}
+.buttonHover{
+  display: block;
+  margin: 20px auto 0;
+  height: 100px;
+  width: 250px;
+  background: transparent;
+  font-size: 30px;
+  font-weight: 900;
+  border: 1px rgb(221, 221, 221) solid;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(196, 196, 196);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.buttonHover:nth-child(1):before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1px;
+height: 100%;
+width: calc(100% + 50px);
+background: yellow;
+z-index: -1;
+transform: rotate(-90deg);
+  transform-origin: bottom left;
+transition: all 1s linear;
+}
+.buttonHover:nth-child(2):before{
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 250px;
+height: 100%;
+width: calc(100% + 50px);
+background: yellow;
+z-index: -1;
+transition: all 1s linear;
+}
+.buttonHover:nth-child(1):hover:before {
+  transform: rotate(0deg);
+}
+.buttonHover:nth-child(2):hover:before {
+  right: 0;
+}
+.buttonHover2{
+  display: block;
+  margin: 20px auto 0;
+  height: 100px;
+  width: 250px;
+  background: white;
+  font-size: 30px;
+  font-weight: 900;
+  border: 1px rgb(221, 221, 221) solid;
+  position: relative;
+ color: yellow;
+  cursor: pointer;
+  outline:none;
+  }
+.buttonHover2:before{
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+height: 100%;
+width: 100%;
+background: yellow;
+z-index: -1;
+transition: all .3s linear;
+
+}
+
+.buttonHover2:hover:before {
+top: 10px;
+left: 10px;
+}
