@@ -1,23 +1,19 @@
-function forPrint(){
-  console.log('For Loop (start)');
-  for(let i=1;i<=50;i+=3){
-    console.log(i);
+class Person{
+  name;
+  age;
+  constructor(name,age){
+    this.name=name;
+    this.age=age;
   }
-  console.log('For Loop (end)');
 }
-function whilePrint(){
-  console.log('While Loop (start)');
-  let i=1;
-  while(i<=50){
-    console.log(i);
-    i+=3;
-  }
-  console.log('While Loop (end)');
+function moreThan18(person){
+if(person.age>18){
+  console.log(`${person.name} age is ${person.age} and he is over 18`);
+}else{
+  return "you are too young"
 }
-function numAndWord(num,word){
-  for(let i=0;i<num;i++){
-    console.log(word);
-  }
-  return num+word
 }
-console.log(numAndWord(4,"hello"));
+
+let person1=new Person("Yizhak",28);
+let answer = (moreThan18(person1));
+console.log(answer);
